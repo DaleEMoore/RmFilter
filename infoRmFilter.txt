@@ -1,0 +1,17 @@
+Remove Filter
+Delete files according to some filter.
+
+Overview
+LucysCakeShop.Com needs it's over 1 week old logs removed.
+
+
+
+TODO
+Delete files in a command line specified folder that are older than 1 week.
+
+
+
+
+Logs
+Wednesday 4 February 2015 9:28 AM CST
+Created
