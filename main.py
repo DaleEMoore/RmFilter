@@ -54,3 +54,4 @@ for s1 in args.folder:
                 #print(os.path.join(subdir, file)) # us with os.walk()
 
                 # TODO; delete selected file
+                # os.remove(fullFile)
