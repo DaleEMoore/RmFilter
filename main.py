@@ -1,6 +1,6 @@
 __author__ = 'dalem'
 
-# TODO: parse command line and get folder
+# parse command line and get folder(s)
 import argparse
 import sys
 
@@ -13,13 +13,14 @@ print ('parser:' + str(parser))
 print('args:' + str(args))
 print('vars(args):')
 vars(args)
+print(args.folder)
 #TypeError: 'Namespace' object has no attribute '__getitem__'
 #print(args['folder'])
-print(parser.parse_args(['--folder']))
+#print(parser.parse_args(['--folder']))
 
 #print(args.accumulate(args.integers))
 
-# TODO; iterate through folder and get files older than 1 week.
+# TODO; iterate through folder(s) and get files older than 1 week.
 
 
 # TODO; delete selected file
