@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__author__ = 'dalem'
+__author__ = 'DaleEMoore@gMail.Com'
 
 # parse command line and get folder(s)
 import argparse
@@ -9,7 +9,7 @@ import sys
 import datetime
 import time
 
-# TODO; calculate one week ago for the date comparison
+# calculate one week ago for the date comparison
 now = datetime.datetime.now()
 lastWeek = now + datetime.timedelta(days=-7)
 #print('       Now:' + str(now))
@@ -37,7 +37,7 @@ else:
 #print(args.folder)
 #TypeError: 'Namespace' object has no attribute '__getitem__'
 #print(args['folder'])
-#print(parser.parse_args(['--folder']))
+#print(parser.parse_args(['-folder']))
 
 #print(args.accumulate(args.integers))
 
@@ -66,8 +66,8 @@ for s1 in args.folder:
                 #print(fullFile)
                 #print(os.path.join(subdir, file)) # us with os.walk()
 
-                # TODO; delete selected file
-                # TODO; if --kill on command line kill 'em otherwise just display.
+                # delete selected file
+                # if -rm on command line kill 'em otherwise just display.
                 # os.remove(fullFile)
 
     # TODO; set ctime for testing?

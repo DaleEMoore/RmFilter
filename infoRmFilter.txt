@@ -7,7 +7,6 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
-Delete files in a command line specified folder that are older than 1 week.
 
 
 
@@ -15,3 +14,18 @@ Delete files in a command line specified folder that are older than 1 week.
 Logs
 Wednesday 4 February 2015 9:28 AM CST
 Created
+
+
+Thursday 5 February 2015 6:29 AM CST
+Delete files in a command line specified folder that are older than 1 week.
+
+Hi Mike;
+
+ssh root@mlconsultsrv.com
+pushd /var/www/lucycakeshop.com/web
+root@g157:/var/www/lucycakeshop.com/web#  ./rmFilter.py  -folder logs
+
+This command line (./rmFilter.py  -folder logs) will just display what files match the filter to be removed. To actually remove the files you have to add the "-rm" option to the command line.
+
+I hope this is helpful,
+Dale
