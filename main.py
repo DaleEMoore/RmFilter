@@ -54,4 +54,10 @@ for s1 in args.folder:
                 #print(os.path.join(subdir, file)) # us with os.walk()
 
                 # TODO; delete selected file
+                # TODO; if --kill on command line kill 'em otherwise just display.
                 # os.remove(fullFile)
+
+    # TODO; set ctime for testing?
+    # this says it's impossible.
+    # http://stackoverflow.com/questions/4537291/setting-creation-or-change-timestamps
+    # Perhaps I can create a unit test that would do a good job of faking it out.
