@@ -13,15 +13,24 @@ import time
 now = datetime.datetime.now()
 lastWeek = now + datetime.timedelta(days=-7)
 #print('       Now:' + str(now))
-print("Remove files before created last week or before:" + str(lastWeek))
+print("Remove files created last week or before:" + str(lastWeek))
 #date += datetime.timedelta(days=1)
 
 
 parser = argparse.ArgumentParser(description='Remove files from a folder defined by a filter.')
-parser.add_argument('--folder', type=str, nargs='+',
-                   help='the folder to remove files from')
+parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files from')
+parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display')
+#parser.add_argument('-b', action='store_true', default=False)
+#parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
 
 args = parser.parse_args()
+rmDsp = ""
+if args.rm:
+    print('Remove filtered files')
+    rmDsp = "Remove"
+else:
+    print('Display filtered files, do NOT remove')
+    rmDsp = "Do NOT Remove"
 #print ('parser:' + str(parser))
 #print('args:' + str(args))
 #print('vars(args):' + str(vars(args)))
@@ -45,7 +54,11 @@ for s1 in args.folder:
             mdate = datetime.datetime.fromtimestamp(mtime)
             cdate = datetime.datetime.fromtimestamp(ctime)
             if cdate <= lastWeek:
-                print((fullFile + " created: %s" % time.ctime(ctime)))
+                print((rmDsp + " " + fullFile + " created: %s" % time.ctime(ctime)))
+                if args.rm:
+                    print("Should remove " + fullFile)
+                    #os.remove(fullFile)
+
                 #print((" created: %s" % time.ctime(ctime)))
                 #print(("accessed: %s" % time.ctime(atime)) + " " + str(adate) )
                 #print(("modified: %s" % time.ctime(mtime)) + " " + str(mdate) )
