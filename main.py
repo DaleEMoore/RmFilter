@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+# Command lines
+#   Luter at Lucy's Cake Shop is "./rmFilter.py  -folder logs -rm"
+#   Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
+#
 
 __author__ = 'DaleEMoore@gMail.Com'
 
@@ -15,6 +19,12 @@ lastWeek = now + datetime.timedelta(days=-7)
 #print('       Now:' + str(now))
 print("Remove files created last week or before:" + str(lastWeek))
 #date += datetime.timedelta(days=1)
+
+
+# TODO; figure out how to tell this program to delete everything except a list of keeps:
+#    Keep Everyday for the last month.
+#    Keep Every Friday for the last quarter.
+#    Keep The first day of every month for the last 2 years.
 
 
 parser = argparse.ArgumentParser(description='Remove files from a folder defined by a filter.')
@@ -70,7 +80,7 @@ for s1 in args.folder:
                 # if -rm on command line kill 'em otherwise just display.
                 # os.remove(fullFile)
 
-    # TODO; set ctime for testing?
+    # TODO; set ctime for testing? or should this be in-code since setting ctime is sometimes not practical.
     # this says it's impossible.
     # http://stackoverflow.com/questions/4537291/setting-creation-or-change-timestamps
     # Perhaps I can create a unit test that would do a good job of faking it out.

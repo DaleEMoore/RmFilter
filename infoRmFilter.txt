@@ -7,7 +7,13 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
-
+For LFI a smarter remove filter (rmFilter), removing recent files.
+    Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
+    Keep Everyday for the last month.
+    Keep Every Friday for the last quarter.
+    Keep The first day of every month for the last 2 years.
+    rmFilter is a separate project in PycharmProjects.
+    https://github.com/DaleEMoore/RmFilter
 
 
 
