@@ -51,6 +51,10 @@ else:
 
 #print(args.accumulate(args.integers))
 
+if args.folder == None:
+    print("No folders on command line")
+    exit()
+
 # iterate through folder(s)
 for s1 in args.folder:
     #print('Processing:' + s1)
