@@ -17,7 +17,7 @@ import time
 now = datetime.datetime.now()
 lastWeek = now + datetime.timedelta(days=-7)
 #print('       Now:' + str(now))
-print("Remove files created last week or before:" + str(lastWeek))
+print("Remove files created last week or before:" + str(lastWeek) + ".")
 #date += datetime.timedelta(days=1)
 
 
@@ -27,19 +27,20 @@ print("Remove files created last week or before:" + str(lastWeek))
 #    Keep The first day of every month for the last 2 years.
 
 
-parser = argparse.ArgumentParser(description='Remove files from a folder defined by a filter.')
-parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files from')
-parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display')
+parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
+parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
+parser.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
 #parser.add_argument('-b', action='store_true', default=False)
 #parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
 
 args = parser.parse_args()
 rmDsp = ""
 if args.rm:
-    print('Remove filtered files')
+    print('Remove filtered files.')
     rmDsp = "Remove"
 else:
-    print('Display filtered files, do NOT remove')
+    print('Display filtered files, do NOT remove.')
     rmDsp = "Do NOT Remove"
 #print ('parser:' + str(parser))
 #print('args:' + str(args))
@@ -52,7 +53,8 @@ else:
 #print(args.accumulate(args.integers))
 
 if args.folder == None:
-    print("No folders on command line")
+    print("ERROR: No folders on command line!")
+    parser.print_help()
     exit()
 
 # iterate through folder(s)

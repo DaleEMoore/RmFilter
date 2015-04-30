@@ -35,3 +35,11 @@ This command line (./rmFilter.py  -folder logs) will just display what files mat
 
 I hope this is helpful,
 Dale
+
+
+Thu Apr 30 11:12:54 CDT 2015
+This seems impossible to me!
+At Bubbles.MW the PyCharm version of main.py and the gvim-ed version did not match.
+The gvim-ed version was newer.
+I copied the gvim version into the PyCharm version.
+
