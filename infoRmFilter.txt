@@ -7,6 +7,23 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
+How am I going to TEST this?
+    Build TEST system relying on python testing facilities.
+    Learn Python testing, unittest, pytest, ... What's the best/right thing to do?
+
+    I can't build folders and files with appropriate date of creation (Friday, EOM, ...)
+    using mkdir on any OS. Instead should I use date of modification?
+    http://stackoverflow.com/questions/237079/how-to-get-file-creation-modification-date-times-in-python
+
+    Can I have a program mode -SetupTEST which builds
+    the TEST data? Can I have a program mode -RunTEST which executes the test
+    against TEST data?
+    Does the TESTdata folder start in / or \?
+    folder TESTdata with some files and
+        folder TESTfolder1 Friday with files and folders
+        folder TESTfolder2 EOM with files and folders
+    run test keepFriday, keepEOM.
+
 For LFI a smarter remove filter (rmFilter), removing recent files.
     Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
     Keep Everyday for the last month.
