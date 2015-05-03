@@ -24,6 +24,10 @@ How am I going to TEST this?
         folder TESTfolder2 EOM with files and folders
     run test keepFriday, keepEOM.
 
+    http://docs.python-guide.org/en/latest/writing/tests/
+        Run tests automatically and notify DaleEMoore@gMail.Com of the test results.
+        Run all tests before pushing code to the central repository.
+
 For LFI a smarter remove filter (rmFilter), removing recent files.
     Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
     Keep Everyday for the last month.
@@ -32,6 +36,11 @@ For LFI a smarter remove filter (rmFilter), removing recent files.
     rmFilter is a separate project in PycharmProjects.
     https://github.com/DaleEMoore/RmFilter
 
+Add an option to parse file names and folders by a Regular Expression (RE)
+    like grep.
+
+Add an option for folder mode scanning only the top-level-folders within the
+    target folder and ignoring everything underneath.
 
 
 Logs

@@ -17,7 +17,7 @@ import time
 now = datetime.datetime.now()
 lastWeek = now + datetime.timedelta(days=-7)
 #print('       Now:' + str(now))
-print("Remove files created last week or before:" + str(lastWeek) + ".")
+print("Remove files created last week or before:" + str(lastWeek))
 #date += datetime.timedelta(days=1)
 
 
@@ -37,10 +37,10 @@ parser.add_argument('-keepfriday', action='store_true', default=False, help='kee
 args = parser.parse_args()
 rmDsp = ""
 if args.rm:
-    print('Remove filtered files.')
+    print('Remove filtered files')
     rmDsp = "Remove"
 else:
-    print('Display filtered files, do NOT remove.')
+    print('Display filtered files, do NOT remove')
     rmDsp = "Do NOT Remove"
 #print ('parser:' + str(parser))
 #print('args:' + str(args))
