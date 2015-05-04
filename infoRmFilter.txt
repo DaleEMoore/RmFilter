@@ -28,6 +28,28 @@ How am I going to TEST this?
         Run tests automatically and notify DaleEMoore@gMail.Com of the test results.
         Run all tests before pushing code to the central repository.
 
+    Test runner in PyCharm fails with:
+    usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+    utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+
+    at main.py line 38
+        args = parser.parse_args()
+
+    Somebody has a similar problem here:
+    http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
+    It seems I should split main.py!main() parser code into something that only runs if __name__ == "__main__".
+    That code should parse into the same fields that would be setup from test.py!test_rmFilter()
+    1) Convert main.py to split parser code into
+        if __name__ == "__main__" section
+        and save argparse results
+    2) Change test.py to create argparse results like item 1, above.
+    TODO: split parser code so it's not run twice when testing and load fields so main and test get the same results.
+    Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
+
+
+
+Run tests before submitting to git central repository and avoid push if tests fail?
+
 For LFI a smarter remove filter (rmFilter), removing recent files.
     Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
     Keep Everyday for the last month.
