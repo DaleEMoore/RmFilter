@@ -13,22 +13,24 @@ import sys
 import datetime
 import time
 
+theProgram = "main.py"
+
 def main(parser2, argv2):
     # calculate one week ago for the date comparison
     now = datetime.datetime.now()
     lastWeek = now + datetime.timedelta(days=-7)
     #print('       Now:' + str(now))
-    print("Remove files created last week or before:" + str(lastWeek))
+    print("Remove files created last week or before:" + str(lastWeek) + ". " + theProgram)
     #date += datetime.timedelta(days=1)
 
 
     args = parser2.parse_args()
     rmDsp = ""
     if args.rm:
-        print('Remove filtered files')
+        print("Remove filtered files " + theProgram)
         rmDsp = "Remove"
     else:
-        print('Display filtered files, do NOT remove')
+        print("Display filtered files, do NOT remove. " + theProgram)
         rmDsp = "Do NOT Remove"
     #print ('parser:' + str(parser))
     #print('args:' + str(args))
@@ -41,9 +43,9 @@ def main(parser2, argv2):
     #print(args.accumulate(args.integers))
 
     if args.folder == None:
-        print("ERROR: No folders on command line!")
-        parser.print_help()
-        exit()
+        print("ERROR: No folders on command line! " + theProgram)
+        parser2.print_help()
+        return()
 
     # iterate through folder(s)
     for s1 in args.folder:
@@ -58,9 +60,9 @@ def main(parser2, argv2):
                 mdate = datetime.datetime.fromtimestamp(mtime)
                 cdate = datetime.datetime.fromtimestamp(ctime)
                 if cdate <= lastWeek:
-                    print((rmDsp + " " + fullFile + " created: %s" % time.ctime(ctime)))
+                    print((rmDsp + " " + fullFile + " created: %s" % time.ctime(ctime)) + " " + theProgram)
                     if args.rm:
-                        print("Should remove " + fullFile)
+                        print("Should remove " + fullFile + "  " + theProgram)
                         #os.remove(fullFile)
 
                     #print((" created: %s" % time.ctime(ctime)))
@@ -81,6 +83,7 @@ def main(parser2, argv2):
     return True
 
 if __name__ == "__main__":
+    theProgram = sys.argv[0]
     # TODO; figure out how to tell this program to delete everything except a list of keeps:
     #    Keep Everyday for the last month.
     #    Keep Every Friday for the last quarter.
@@ -94,4 +97,4 @@ if __name__ == "__main__":
     #parser.add_argument('-b', action='store_true', default=False)
     #parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
 
-    main(parser)
+    main(parser, sys.argv)

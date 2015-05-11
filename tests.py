@@ -10,6 +10,7 @@ import time
 import unittest2 as unittest
 
 theDir = "testFolder1"
+theProgram = "tests.py"
 
 #def setUpModule():
 #    print ("setUp before Module")
@@ -18,7 +19,7 @@ theDir = "testFolder1"
 #    print ("tearDown after Module")
 
 def createFolder(folderName, timeMod=time.time()):
-    print ("Create " + folderName + ".")
+    print ("Create " + folderName + ". " + theProgram)
     try:
         os.makedirs(folderName)
     except:
@@ -30,7 +31,7 @@ class TestStringMethods(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("setUp before Class")
+        print ("setUp before Class " + theProgram)
 
         # create folders and files for testing.
         createFolder(theDir)
@@ -52,15 +53,15 @@ class TestStringMethods(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print ("tearDown after Class")
+        print ("tearDown after Class " + theProgram)
 
         # delete folders and files from testing.
-        print ("Delete all files and folders under " + theDir + ".")
+        print ("Delete all files and folders under " + theDir + ". " + theProgram)
         whatHappened = shutil.rmtree(theDir)
-        print ("whatHappened from Delete:" + str(whatHappened))
+        print ("whatHappened from Delete:" + str(whatHappened) + " " + theProgram)
 
     def test_rmFilter(self):
-        print ("\nTest running rmFilter against the folders that have been setup.")
+        print ("\nTest running rmFilter against the folders that have been setup. " + theProgram)
 
         # TODO; setup args like command line
         # Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
@@ -119,5 +120,6 @@ class TestStringMethods(unittest.TestCase):
     #  self.assertEqual('foo'.upper(), 'FOO')
 
 if __name__ == '__main__':
+    theProgram = sys.argv[0]
     unittest.main()
-    print("Done tests.py")
+    print("Done " + theProgram)
