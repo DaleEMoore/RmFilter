@@ -76,7 +76,7 @@ def main(parser2, argv2):
                     # if -rm on command line kill 'em otherwise just display.
                     # os.remove(fullFile)
 
-        # TODO; set ctime for testing? or should this be in-code since setting ctime is sometimes not practical.
+        # set mtime for testing. ctime is not create time in Linux.
         # this says it's impossible.
         # http://stackoverflow.com/questions/4537291/setting-creation-or-change-timestamps
         # Perhaps I can create a unit test that would do a good job of faking it out.

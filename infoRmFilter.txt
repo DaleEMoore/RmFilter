@@ -7,6 +7,8 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
+Allow run rmFilter in selected folders FLAT, not descending into sub-folders.
+
 How am I going to TEST this?
     Build TEST system relying on python testing facilities.
     Learn Python testing, unittest, pytest, ... What's the best/right thing to do?

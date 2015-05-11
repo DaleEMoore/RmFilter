@@ -59,6 +59,28 @@ class TestStringMethods(unittest.TestCase):
         print ("Delete all files and folders under " + theDir + ". " + theProgram)
         whatHappened = shutil.rmtree(theDir)
         print ("whatHappened from Delete:" + str(whatHappened) + " " + theProgram)
+        """
+        TODO; test run this in PyCharm gets  failure here
+
+        whatHappened from Delete:None tests.py
+
+        Process finished with exit code 0
+
+        Error
+        Traceback (most recent call last):
+          File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 88, in test_rmFilter
+            main.main(parser2, argv2)
+          File "/home/dalem/PycharmProjects/RmFilter/main.py", line 27, in main
+            args = parser2.parse_args()
+          File "/usr/lib/python3.4/argparse.py", line 1729, in parse_args
+            self.error(msg % ' '.join(argv))
+          File "/usr/lib/python3.4/argparse.py", line 2384, in error
+            self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+          File "/usr/lib/python3.4/argparse.py", line 2371, in exit
+            _sys.exit(status)
+        SystemExit: 2
+
+        """
 
     def test_rmFilter(self):
         print ("\nTest running rmFilter against the folders that have been setup. " + theProgram)
