@@ -1,7 +1,8 @@
 __author__ = 'DaleEMoore@gMail.Com'
 # From https://docs.python.org/2/library/unittest.html and others.
 
-import argparse
+from argparse import ArgumentParser as ArgumentParser2
+#import argparse
 import copy
 import os
 import shutil
@@ -93,7 +94,8 @@ class TestStringMethods(unittest.TestCase):
         #args = parser.parse_args()
         #print ("args:" + args.echo)
 
-        parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+        parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
+        #parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
         parser.add_argument('--folder', type=str, nargs='+', help='the folder to remove files and folders from.')
         # --folder is acceptable reduced to -f.
         parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')

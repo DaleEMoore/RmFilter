@@ -7,7 +7,8 @@
 __author__ = 'DaleEMoore@gMail.Com'
 
 # parse command line and get folder(s)
-import argparse
+from argparse import ArgumentParser as ArgumentParser2
+#import argparse
 import os
 import sys
 import datetime
@@ -89,7 +90,8 @@ if __name__ == "__main__":
     #    Keep Every Friday for the last quarter.
     #    Keep The first day of every month for the last 2 years.
 
-    parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+    parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
+    #parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
     #print ("running:" + parser.prog)
     parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
     parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')

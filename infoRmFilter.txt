@@ -3,16 +3,116 @@ Delete files according to some filter.
 
 Overview
 LucysCakeShop.Com needs it's over 1 week old logs removed.
-
+# Command lines
+#   Luter at Lucy's Cake Shop is "./rmFilter.py  -folder logs -rm"
+#   Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
 
 
 TODO
-Split up code to, perhaps, fix the UnitTest2 problems
-    Make main.py a small chunk of code that processes the command line then calls a second routine that
-    does the actual-processing. This way I can test the actual-processing without worrying about the interference
-    caused by argparse.
-    main.py can continue to be the argparse processor.
-    What is the name of the new actual-processing file? rmFilter.py?
+Using "from argparse import ArgumentParser as ArgumentParser2"
+    Not split; used "from argparse import ArgumentParser as ArgumentParser2"
+
+    running unittests in PyCharm gets this:
+        usage: utrunner.py [-h] [--folder FOLDER [FOLDER ...]] [-rm] [--keepfriday]
+        utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+    and running unit2 has problems with rmFolder's arguments.
+    How can I run unit2 and pass arguments down?
+    Or should I go back to splitting the code into main.py which does the argparse and rmFilter.py which
+    does the actual-processing?
+
+
+    setup DEV, unit2, unitTest2, PyCharm unittest-ing, TEST, and LIVE
+    processing methodologies.
+
+Create valid unit tests for
+    Lucy's Cake Shop
+    LFI
+
+Allow run rmFilter in selected folders FLAT, not descending into sub-folders.
+
+Run tests before submitting to git central repository and avoid push if tests fail?
+
+For LFI a smarter remove filter (rmFilter), removing recent files.
+    Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
+    Keep Everyday for the last month.
+    Keep Every Friday for the last quarter.
+    Keep The first day of every month for the last 2 years.
+    rmFilter is a separate project in PycharmProjects.
+    https://github.com/DaleEMoore/RmFilter
+
+Add an option to parse file names and folders by a Regular Expression (RE)
+    like grep.
+
+Add an option for folder mode scanning only the top-level-folders within the
+    target folder and ignoring everything underneath.
+
+
+Logs
+Wednesday 4 February 2015 9:28 AM CST
+Created
+
+
+Thursday 5 February 2015 6:29 AM CST
+Delete files in a command line specified folder that are older than 1 week.
+
+Hi Mike;
+
+ssh root@mlconsultsrv.com
+pushd /var/www/lucycakeshop.com/web
+root@g157:/var/www/lucycakeshop.com/web#  ./rmFilter.py  -folder logs
+
+This command line (./rmFilter.py  -folder logs) will just display what files match the filter to be removed. To actually remove the files you have to add the "-rm" option to the command line.
+
+I hope this is helpful,
+Dale
+
+
+Thu Apr 30 11:12:54 CDT 2015
+This seems impossible to me!
+At Bubbles.MW the PyCharm version of main.py and the gvim-ed version did not match.
+The gvim-ed version was newer.
+I copied the gvim version into the PyCharm version.
+
+
+Fri 5 Jun 2016 7:50 AM CST
+How am I going to TEST this?
+    Build TEST system relying on python testing facilities.
+    Learn Python testing, unittest, pytest, ... What's the best/right thing to do?
+
+    I can't build folders and files with appropriate date of creation (Friday, EOM, ...)
+    using mkdir on any OS. Instead should I use date of modification?
+    http://stackoverflow.com/questions/237079/how-to-get-file-creation-modification-date-times-in-python
+
+    Can I have a program mode -SetupTEST which builds
+    the TEST data? Can I have a program mode -RunTEST which executes the test
+    against TEST data?
+    Does the TESTdata folder start in / or \?
+    folder TESTdata with some files and
+        folder TESTfolder1 Friday with files and folders
+        folder TESTfolder2 EOM with files and folders
+    run test keepFriday, keepEOM.
+
+    http://docs.python-guide.org/en/latest/writing/tests/
+        Run tests automatically and notify DaleEMoore@gMail.Com of the test results.
+        Run all tests before pushing code to the central repository.
+
+    Test runner in PyCharm fails with:
+    usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+    utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+
+    at main.py line 38
+        args = parser.parse_args()
+
+    Somebody has a similar problem here:
+    http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
+    It seems I should split main.py!main() parser code into something that only runs if __name__ == "__main__".
+    That code should parse into the same fields that would be setup from test.py!test_rmFilter()
+    1) Convert main.py to split parser code into
+        if __name__ == "__main__" section
+        and save argparse results
+    2) Change test.py to create argparse results like item 1, above.
+    TODO: split parser code so it's not run twice when testing and load fields so main and test get the same results.
+    Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
 
 Build a small example of my UnitTest2 problems.
     Running tests via pyCharm and unit2 I get errors; as pyCharm:
@@ -80,89 +180,18 @@ Build a small example of my UnitTest2 problems.
     http://stackoverflow.com/questions/1029891/python-unittest-is-there-a-way-to-pass-command-line-options-to-the-app
 
 
-Allow run rmFilter in selected folders FLAT, not descending into sub-folders.
+Split up code to, perhaps, fix the UnitTest2 problems
+    Make main.py a small chunk of code that processes the command line then calls a second routine that
+    does the actual-processing. This way I can test the actual-processing without worrying about the interference
+    caused by argparse.
+    main.py can continue to be the argparse processor.
+    What is the name of the new actual-processing file? rmFilter.py?
 
-How am I going to TEST this?
-    Build TEST system relying on python testing facilities.
-    Learn Python testing, unittest, pytest, ... What's the best/right thing to do?
+    Or could I "import argparse as ap2"?
+    Or could I "from argparse import ArgumentParser as ap2"?
 
-    I can't build folders and files with appropriate date of creation (Friday, EOM, ...)
-    using mkdir on any OS. Instead should I use date of modification?
-    http://stackoverflow.com/questions/237079/how-to-get-file-creation-modification-date-times-in-python
+    "from argparse import ArgumentParser as ap2" seems to be the answer!
+    from argparse import ArgumentParser as ArgumentParser2
+    Wouldn't it have been better for unitTest2 to do that?
 
-    Can I have a program mode -SetupTEST which builds
-    the TEST data? Can I have a program mode -RunTEST which executes the test
-    against TEST data?
-    Does the TESTdata folder start in / or \?
-    folder TESTdata with some files and
-        folder TESTfolder1 Friday with files and folders
-        folder TESTfolder2 EOM with files and folders
-    run test keepFriday, keepEOM.
-
-    http://docs.python-guide.org/en/latest/writing/tests/
-        Run tests automatically and notify DaleEMoore@gMail.Com of the test results.
-        Run all tests before pushing code to the central repository.
-
-    Test runner in PyCharm fails with:
-    usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
-    utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
-
-    at main.py line 38
-        args = parser.parse_args()
-
-    Somebody has a similar problem here:
-    http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
-    It seems I should split main.py!main() parser code into something that only runs if __name__ == "__main__".
-    That code should parse into the same fields that would be setup from test.py!test_rmFilter()
-    1) Convert main.py to split parser code into
-        if __name__ == "__main__" section
-        and save argparse results
-    2) Change test.py to create argparse results like item 1, above.
-    TODO: split parser code so it's not run twice when testing and load fields so main and test get the same results.
-    Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
-
-
-
-Run tests before submitting to git central repository and avoid push if tests fail?
-
-For LFI a smarter remove filter (rmFilter), removing recent files.
-    Ron at LFI wants to keep EOM, EOQ, EOW and dailys for 10 days.
-    Keep Everyday for the last month.
-    Keep Every Friday for the last quarter.
-    Keep The first day of every month for the last 2 years.
-    rmFilter is a separate project in PycharmProjects.
-    https://github.com/DaleEMoore/RmFilter
-
-Add an option to parse file names and folders by a Regular Expression (RE)
-    like grep.
-
-Add an option for folder mode scanning only the top-level-folders within the
-    target folder and ignoring everything underneath.
-
-
-Logs
-Wednesday 4 February 2015 9:28 AM CST
-Created
-
-
-Thursday 5 February 2015 6:29 AM CST
-Delete files in a command line specified folder that are older than 1 week.
-
-Hi Mike;
-
-ssh root@mlconsultsrv.com
-pushd /var/www/lucycakeshop.com/web
-root@g157:/var/www/lucycakeshop.com/web#  ./rmFilter.py  -folder logs
-
-This command line (./rmFilter.py  -folder logs) will just display what files match the filter to be removed. To actually remove the files you have to add the "-rm" option to the command line.
-
-I hope this is helpful,
-Dale
-
-
-Thu Apr 30 11:12:54 CDT 2015
-This seems impossible to me!
-At Bubbles.MW the PyCharm version of main.py and the gvim-ed version did not match.
-The gvim-ed version was newer.
-I copied the gvim version into the PyCharm version.
 
