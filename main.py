@@ -14,6 +14,8 @@ import sys
 import datetime
 import time
 
+import rmFilter
+
 theProgram = "main.py"
 
 def main(parser2, argv2):
@@ -49,38 +51,39 @@ def main(parser2, argv2):
         return()
 
     # iterate through folder(s)
-    for s1 in args.folder:
-        #print('Processing:' + s1)
-        for file in os.listdir(s1): # os.walk(s1) walks down the tree.
-        #for subdir, dirs, files in os.walk(s1): # os.walk(s1) walks down the tree.
-            fullFile = os.path.join(s1, file)
-            if not os.path.isdir(fullFile):
-                # get files older than 7 days.
-                (mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime) = os.stat(fullFile)
-                adate = datetime.datetime.fromtimestamp(atime)
-                mdate = datetime.datetime.fromtimestamp(mtime)
-                cdate = datetime.datetime.fromtimestamp(ctime)
-                if cdate <= lastWeek:
-                    print((rmDsp + " " + fullFile + " created: %s" % time.ctime(ctime)) + " " + theProgram)
-                    if args.rm:
-                        print("Should remove " + fullFile + "  " + theProgram)
-                        #os.remove(fullFile)
-
-                    #print((" created: %s" % time.ctime(ctime)))
-                    #print(("accessed: %s" % time.ctime(atime)) + " " + str(adate) )
-                    #print(("modified: %s" % time.ctime(mtime)) + " " + str(mdate) )
-                    #print((" created: %s" % time.ctime(ctime)) + " " + str(cdate) )
-                    #print(fullFile)
-                    #print(os.path.join(subdir, file)) # us with os.walk()
-
-                    # delete selected file
-                    # if -rm on command line kill 'em otherwise just display.
-                    # os.remove(fullFile)
-
-        # set mtime for testing. ctime is not create time in Linux.
-        # this says it's impossible.
-        # http://stackoverflow.com/questions/4537291/setting-creation-or-change-timestamps
-        # Perhaps I can create a unit test that would do a good job of faking it out.
+    rmFilter.main(parser2, argv2, args, lastWeek, rmDsp)
+    #for s1 in args.folder:
+    #    #print('Processing:' + s1)
+    #    for file in os.listdir(s1): # os.walk(s1) walks down the tree.
+    #    #for subdir, dirs, files in os.walk(s1): # os.walk(s1) walks down the tree.
+    #        fullFile = os.path.join(s1, file)
+    #        if not os.path.isdir(fullFile):
+    #            # get files older than 7 days.
+    #            (mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime) = os.stat(fullFile)
+    #            adate = datetime.datetime.fromtimestamp(atime)
+    #            mdate = datetime.datetime.fromtimestamp(mtime)
+    #            cdate = datetime.datetime.fromtimestamp(ctime)
+    #            if cdate <= lastWeek:
+    #                print((rmDsp + " " + fullFile + " created: %s" % time.ctime(ctime)) + " " + theProgram)
+    #                if args.rm:
+    #                    print("Should remove " + fullFile + "  " + theProgram)
+    #                    #os.remove(fullFile)
+    #
+    #                #print((" created: %s" % time.ctime(ctime)))
+    #                #print(("accessed: %s" % time.ctime(atime)) + " " + str(adate) )
+    #                #print(("modified: %s" % time.ctime(mtime)) + " " + str(mdate) )
+    #                #print((" created: %s" % time.ctime(ctime)) + " " + str(cdate) )
+    #                #print(fullFile)
+    #                #print(os.path.join(subdir, file)) # us with os.walk()
+    #
+    #                # delete selected file
+    #                # if -rm on command line kill 'em otherwise just display.
+    #                # os.remove(fullFile)
+    #
+    #    # set mtime for testing. ctime is not create time in Linux.
+    #    # this says it's impossible.
+    #    # http://stackoverflow.com/questions/4537291/setting-creation-or-change-timestamps
+    #    # Perhaps I can create a unit test that would do a good job of faking it out.
     return True
 
 if __name__ == "__main__":

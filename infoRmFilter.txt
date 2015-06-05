@@ -20,7 +20,6 @@ Using "from argparse import ArgumentParser as ArgumentParser2"
     Or should I go back to splitting the code into main.py which does the argparse and rmFilter.py which
     does the actual-processing?
 
-
     setup DEV, unit2, unitTest2, PyCharm unittest-ing, TEST, and LIVE
     processing methodologies.
 

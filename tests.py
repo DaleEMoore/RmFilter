@@ -1,9 +1,10 @@
 __author__ = 'DaleEMoore@gMail.Com'
 # From https://docs.python.org/2/library/unittest.html and others.
 
-from argparse import ArgumentParser as ArgumentParser2
+#from argparse import ArgumentParser as ArgumentParser2
 #import argparse
 import copy
+import datetime
 import os
 import shutil
 import sys
@@ -94,23 +95,46 @@ class TestStringMethods(unittest.TestCase):
         #args = parser.parse_args()
         #print ("args:" + args.echo)
 
-        parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
-        #parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
-        parser.add_argument('--folder', type=str, nargs='+', help='the folder to remove files and folders from.')
-        # --folder is acceptable reduced to -f.
-        parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
-        parser.add_argument('--keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
-        # TODO; something like: args = "main.py -folder ."
-        # Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
-        parser2 = copy.copy(parser)
-        argv2 = '--foo .'.split()
-        #argv2 = ['--folder','.']
-        #argv2 = copy.copy(sys.argv)
-        #args = parser2.parse_args()
-        # http://stackoverflow.com/questions/18668947/how-do-i-set-sys-argv-so-i-can-unit-test-it
-        import main
-        main.main(parser2, argv2)
-        # TODO; unit2 runs here because parser is processed twice and uses my default options for rmFilter
+        #parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
+        ##parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+        #parser.add_argument('--folder', type=str, nargs='+', help='the folder to remove files and folders from.')
+        ## --folder is acceptable reduced to -f.
+        #parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
+        #parser.add_argument('--keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
+        ## TODO; something like: args = "main.py -folder ."
+        ## Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
+        #parser2 = copy.copy(parser)
+        #argv2 = '--foo .'.split()
+        ##argv2 = ['--folder','.']
+        ##argv2 = copy.copy(sys.argv)
+        ##args = parser2.parse_args()
+        ## http://stackoverflow.com/questions/18668947/how-do-i-set-sys-argv-so-i-can-unit-test-it
+
+        from argparse import ArgumentParser as ArgumentParser2
+        parser2 = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
+        parser2.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
+        parser2.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
+        parser2.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
+        args = parser2.parse_args()
+        rmDsp = ""
+        if args.rm:
+            print("Remove filtered files " + theProgram)
+            rmDsp = "Remove"
+        else:
+            print("Display filtered files, do NOT remove. " + theProgram)
+            rmDsp = "Do NOT Remove"
+        # calculate one week ago for the date comparison
+        now = datetime.datetime.now()
+        lastWeek = now + datetime.timedelta(days=-7)
+        #print('       Now:' + str(now))
+        print("Remove files created last week or before:" + str(lastWeek) + ". " + theProgram)
+
+        import rmFilter
+        rmFilter.main(parser2, sys.argv, args, lastWeek, rmDsp)
+
+        #import main
+        #main.main(parser2, argv2)
+        # unit2 runs here because parser is processed twice and uses my default options for rmFilter
         #usage: unit2 [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
         #unit2: error: unrecognized arguments: --verbose
         #ERROR
