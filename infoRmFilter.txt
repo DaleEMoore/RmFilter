@@ -23,6 +23,44 @@ Using "from argparse import ArgumentParser as ArgumentParser2"
     setup DEV, unit2, unitTest2, PyCharm unittest-ing, TEST, and LIVE
     processing methodologies.
 
+    # It MIGHT be unreasonable to use argparse and unittest2!
+
+    This MIGHT be the answer:
+    http://stackoverflow.com/questions/20265522/argparse-and-unittest-python
+
+    use:
+
+        runner = unittest.TextTestRunner()
+        itersuite = unittest.TestLoader().loadTestsFromTestCase(MyTestClass)
+        runner.run(itersuite)
+
+    instead of:
+
+        unittest.main()
+    Nope, some other complications. Perhaps it's my dirty code.
+
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+
+    Or these
+    http://stackoverflow.com/questions/18160078/how-do-you-write-tests-for-the-argparse-portion-of-a-python-module
+    https://www.reddit.com/r/Python/comments/r9o2i/using_nose_and_argparse/
+    might cover my issues.
+
+    Calling an external command in Python
+    http://stackoverflow.com/questions/89228/calling-an-external-command-in-python
+
+    Avoid using argparse when running TEST.
+        Figure out if I'm running TEST and avoid argparse when in TEST mode.
+        Pull the argparse stuff out to be easily avoided so I can still run the key pieces of code
+        when in TEST mode. Call the procedures explicitly.
+    Key code must be separated from argparse invocation.
+    I said this before, but; this is what I should be doing:
+        In the middle of spliting main.py into rmFilter.py and main.py;
+        and using "from argparse import ArgumentParser as ArgumentParser2".
+
+
 Create valid unit tests for
     Lucy's Cake Shop
     LFI
@@ -110,7 +148,7 @@ How am I going to TEST this?
         if __name__ == "__main__" section
         and save argparse results
     2) Change test.py to create argparse results like item 1, above.
-    TODO: split parser code so it's not run twice when testing and load fields so main and test get the same results.
+    split parser code so it's not run twice when testing and load fields so main and test get the same results.
     Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
 
 Build a small example of my UnitTest2 problems.

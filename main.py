@@ -88,6 +88,14 @@ def main(parser2, argv2):
 
 if __name__ == "__main__":
     theProgram = sys.argv[0]
+    """ # This isn't the way to do this. Key code must be separated from argparse invocation.
+    # TODO; am in TEST mode or NOTEST?
+    TEST = True;
+    if TEST:
+        print ("TEST mode.")
+    else:
+        print ("Not TEST mode.")
+    """
     # TODO; figure out how to tell this program to delete everything except a list of keeps:
     #    Keep Everyday for the last month.
     #    Keep Every Friday for the last quarter.
