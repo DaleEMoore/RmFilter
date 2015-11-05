@@ -7,8 +7,8 @@
 __author__ = 'DaleEMoore@gMail.Com'
 
 # parse command line and get folder(s)
-from argparse import ArgumentParser as ArgumentParser2
-#import argparse
+#from argparse import ArgumentParser as ArgumentParser2
+import argparse
 import os
 import sys
 import datetime
@@ -18,7 +18,40 @@ import rmFilter
 
 theProgram = "main.py"
 
-def main(parser2, argv2):
+def create_parser():
+    parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+    ##parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+    ##print ("running:" + parser.prog)
+    parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
+    parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
+    parser.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
+    ##parser.add_argument('-b', action='store_true', default=False)
+    ##parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
+
+    #parser = argparse.ArgumentParser(
+    #    description='Ping a number of servers in AWS based on tags'
+    #)
+    #
+    #parser.add_argument(
+    #    'tags', nargs='+',
+    #    help='Tags to search for in AWS'
+    #)
+    #
+    #parser.add_argument(
+    #    '-R', '--region', type=str, required=False,
+    #    help='AWS region to limit search to'
+    #)
+    #
+    #parser.add_argument(
+    #    '-A', '--ami', type=str, required=False,
+    #    help='AWS AMI to limit search to'
+    #)
+    #
+    return parser
+
+def main():
+    #def main(parser2, argv2):
+
     # calculate one week ago for the date comparison
     now = datetime.datetime.now()
     lastWeek = now + datetime.timedelta(days=-7)
@@ -26,8 +59,10 @@ def main(parser2, argv2):
     print("Remove files created last week or before:" + str(lastWeek) + ". " + theProgram)
     #date += datetime.timedelta(days=1)
 
-
-    args = parser2.parse_args()
+    parser = create_parser()
+    args = parser.parse_args()
+    argv = sys.argv
+    #args = parser2.parse_args()
     rmDsp = ""
     if args.rm:
         print("Remove filtered files " + theProgram)
@@ -47,11 +82,11 @@ def main(parser2, argv2):
 
     if args.folder == None:
         print("ERROR: No folders on command line! " + theProgram)
-        parser2.print_help()
+        parser.print_help()
         return()
 
     # iterate through folder(s)
-    rmFilter.main(parser2, argv2, args, lastWeek, rmDsp)
+    rmFilter.main(parser, argv, args, lastWeek, rmDsp)
     #for s1 in args.folder:
     #    #print('Processing:' + s1)
     #    for file in os.listdir(s1): # os.walk(s1) walks down the tree.
@@ -101,13 +136,14 @@ if __name__ == "__main__":
     #    Keep Every Friday for the last quarter.
     #    Keep The first day of every month for the last 2 years.
 
-    parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
-    #parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
-    #print ("running:" + parser.prog)
-    parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
-    parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
-    parser.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
-    #parser.add_argument('-b', action='store_true', default=False)
-    #parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
-
-    main(parser, sys.argv)
+    main()
+    #parser = ArgumentParser2(description='Remove files and folders from a folder defined by a filter.')
+    ##parser = argparse.ArgumentParser(description='Remove files and folders from a folder defined by a filter.')
+    ##print ("running:" + parser.prog)
+    #parser.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
+    #parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
+    #parser.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
+    ##parser.add_argument('-b', action='store_true', default=False)
+    ##parser.add_argument('-rm', type=str, nargs='+', help='remove the files, otherwise just display')
+    #
+    #main(parser, sys.argv)
