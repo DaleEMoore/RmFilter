@@ -60,6 +60,10 @@ Using "from argparse import ArgumentParser as ArgumentParser2"
         In the middle of spliting main.py into rmFilter.py and main.py;
         and using "from argparse import ArgumentParser as ArgumentParser2".
 
+    Using examples from http://dustinrcollins.com/testing-python-command-line-apps I want to
+    move my rmFilter argparse into a class and reference it there. Then I can run unittest2
+    without rmFilter argparse and unittest2 argparse impacting each other.
+
 
 Create valid unit tests for
     Lucy's Cake Shop
