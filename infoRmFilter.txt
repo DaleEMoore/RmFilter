@@ -9,61 +9,9 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
-Using "from argparse import ArgumentParser as ArgumentParser2"
-    Not split; used "from argparse import ArgumentParser as ArgumentParser2"
-
-    running unittests in PyCharm gets this:
-        usage: utrunner.py [-h] [--folder FOLDER [FOLDER ...]] [-rm] [--keepfriday]
-        utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
-    and running unit2 has problems with rmFolder's arguments.
-    How can I run unit2 and pass arguments down?
-    Or should I go back to splitting the code into main.py which does the argparse and rmFilter.py which
-    does the actual-processing?
-
-    setup DEV, unit2, unitTest2, PyCharm unittest-ing, TEST, and LIVE
-    processing methodologies.
-
-    # It MIGHT be unreasonable to use argparse and unittest2!
-
-    This MIGHT be the answer:
-    http://stackoverflow.com/questions/20265522/argparse-and-unittest-python
-
-    use:
-
-        runner = unittest.TextTestRunner()
-        itersuite = unittest.TestLoader().loadTestsFromTestCase(MyTestClass)
-        runner.run(itersuite)
-
-    instead of:
-
-        unittest.main()
-    Nope, some other complications. Perhaps it's my dirty code.
-
-    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
-    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
-    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
-
-    Or these
-    http://stackoverflow.com/questions/18160078/how-do-you-write-tests-for-the-argparse-portion-of-a-python-module
-    https://www.reddit.com/r/Python/comments/r9o2i/using_nose_and_argparse/
-    might cover my issues.
-
-    Calling an external command in Python
-    http://stackoverflow.com/questions/89228/calling-an-external-command-in-python
-
-    Avoid using argparse when running TEST.
-        Figure out if I'm running TEST and avoid argparse when in TEST mode.
-        Pull the argparse stuff out to be easily avoided so I can still run the key pieces of code
-        when in TEST mode. Call the procedures explicitly.
-    Key code must be separated from argparse invocation.
-    I said this before, but; this is what I should be doing:
-        In the middle of spliting main.py into rmFilter.py and main.py;
-        and using "from argparse import ArgumentParser as ArgumentParser2".
-
-    Using examples from http://dustinrcollins.com/testing-python-command-line-apps I want to
-    move my rmFilter argparse into a class and reference it there. Then I can run unittest2
-    without rmFilter argparse and unittest2 argparse impacting each other.
-
+argparse and unittest don't work well together.
+    Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
+    Look at argParseAndUnitTest.py
 
 Create valid unit tests for
     Lucy's Cake Shop
@@ -235,4 +183,65 @@ Split up code to, perhaps, fix the UnitTest2 problems
     from argparse import ArgumentParser as ArgumentParser2
     Wouldn't it have been better for unitTest2 to do that?
 
+
+Sat Jun  4 11:33:01 CDT 2016
+Start fixing argparse and unittest working together problem.
+
+Using "from argparse import ArgumentParser as ArgumentParser2"
+    Not split; used "from argparse import ArgumentParser as ArgumentParser2"
+
+    running unittests in PyCharm gets this:
+        usage: utrunner.py [-h] [--folder FOLDER [FOLDER ...]] [-rm] [--keepfriday]
+        utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+    and running unit2 has problems with rmFolder's arguments.
+    How can I run unit2 and pass arguments down?
+    Or should I go back to splitting the code into main.py which does the argparse and rmFilter.py which
+    does the actual-processing?
+
+    setup DEV, unit2, unitTest2, PyCharm unittest-ing, TEST, and LIVE
+    processing methodologies.
+
+    # It MIGHT be unreasonable to use argparse and unittest2!
+
+    This MIGHT be the answer:
+    http://stackoverflow.com/questions/20265522/argparse-and-unittest-python
+
+    use:
+
+        runner = unittest.TextTestRunner()
+        itersuite = unittest.TestLoader().loadTestsFromTestCase(MyTestClass)
+        runner.run(itersuite)
+
+    instead of:
+
+        unittest.main()
+    Nope, some other complications. Perhaps it's my dirty code.
+
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+    This: http://dustinrcollins.com/testing-python-command-line-apps is an example of something that really works.
+
+    Or these
+    http://stackoverflow.com/questions/18160078/how-do-you-write-tests-for-the-argparse-portion-of-a-python-module
+    https://www.reddit.com/r/Python/comments/r9o2i/using_nose_and_argparse/
+    might cover my issues.
+
+    Calling an external command in Python
+    http://stackoverflow.com/questions/89228/calling-an-external-command-in-python
+
+    Avoid using argparse when running TEST.
+        Figure out if I'm running TEST and avoid argparse when in TEST mode.
+        Pull the argparse stuff out to be easily avoided so I can still run the key pieces of code
+        when in TEST mode. Call the procedures explicitly.
+    Key code must be separated from argparse invocation.
+    I said this before, but; this is what I should be doing:
+        In the middle of spliting main.py into rmFilter.py and main.py;
+        and using "from argparse import ArgumentParser as ArgumentParser2".
+
+    Using examples from http://dustinrcollins.com/testing-python-command-line-apps I want to
+    move my rmFilter argparse into a class and reference it there. Then I can run unittest2
+    without rmFilter argparse and unittest2 argparse impacting each other.
+
+argparse and unittest don't work well together.
+Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
 
