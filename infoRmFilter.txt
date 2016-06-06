@@ -9,9 +9,37 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
-argparse and unittest don't work well together.
+figure out how to make argparse and unittest work well together.
     Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
-    Look at argParseAndUnitTest.py
+    Look at argParseAndUnitTest1.py
+    I think the answer to this
+    http://stackoverflow.com/questions/1029891/python-unittest-is-there-a-way-to-pass-command-line-options-to-the-app
+    will work fine.
+
+    run unittest2 from code and from command line and from PyCharm and validate argParseAndUnitTest1.py functions.
+    PyCharm Run:
+        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py
+        usage: argParseAndUnitTest1.py [-h] [--input INPUT]
+                                       filename [unittest_args [unittest_args ...]]
+        argParseAndUnitTest1.py: error: the following arguments are required: filename, unittest_args
+        Add paramater some_file.txt and re-run.
+        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py some_file.txt
+
+        ----------------------------------------------------------------------
+        Ran 0 tests in 0.000s
+
+        OK
+        How do I run unittest from PyCharm?
+        How do I look at unittest results in PyCharm?
+    code:
+        dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
+
+        ----------------------------------------------------------------------
+        Ran 0 tests in 0.000s
+
+        OK
+    command line:
+        How do I run unittest from command line?
 
 Create valid unit tests for
     Lucy's Cake Shop
@@ -245,3 +273,8 @@ Using "from argparse import ArgumentParser as ArgumentParser2"
 argparse and unittest don't work well together.
 Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
 
+
+Monday 6 June 2016 6:59 AM CST
+    argParseAndUnitTest2.py
+    trys this one http://stackoverflow.com/questions/20265522/argparse-and-unittest-python might work too.
+    Error: this constructor takes no arguments; use argParseAndUnitTest1.py to fix the rmFilter problems.

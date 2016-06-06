@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
-# argParseAndUnitTest.py
+# argParseAndUnitTest1.py
 
 # argparse and unittest don't work well together.
 # Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
 
 # Run like:
-# dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest.py some_file.txt
+# dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
 
+# From:
+# http://stackoverflow.com/questions/1029891/python-unittest-is-there-a-way-to-pass-command-line-options-to-the-app
 
 
 __author__ = 'DaleEMoore@gMail.Com'
