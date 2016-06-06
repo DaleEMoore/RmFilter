@@ -29,8 +29,43 @@ figure out how to make argparse and unittest work well together.
         Ran 0 tests in 0.000s
 
         OK
-        How do I run unittest from PyCharm?
+        How do I run unittest from PyCharm? In the Project View, right-click tests.py,
+        run Unittests in tests.
+            /usr/bin/python3.4 /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
+            Testing started at 6:18 PM ...
+            usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+            utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+            setUp before Class tests.py
+            Create testFolder1. tests.py
+            Create testFolder1/d1. tests.py
+            Create testFolder1/d2. tests.py
+            Create testFolder1/d3. tests.py
+
+            Test running rmFilter against the folders that have been setup. tests.py
+
+            Error
+            Traceback (most recent call last):
+              File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
+                args = parser2.parse_args()
+              File "/usr/lib/python3.4/argparse.py", line 1740, in parse_args
+                self.error(msg % ' '.join(argv))
+              File "/usr/lib/python3.4/argparse.py", line 2395, in error
+                self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+              File "/usr/lib/python3.4/argparse.py", line 2382, in exit
+                _sys.exit(status)
+            SystemExit: 2
+
+            tearDown after Class tests.py
+            Delete all files and folders under testFolder1. tests.py
+            whatHappened from Delete:None tests.py
+
+            Process finished with exit code 0
         How do I look at unittest results in PyCharm?
+            View, Tool Windows, Run; will show the TestRunner objects.
+            See
+            https://www.jetbrains.com/help/pycharm/2016.1/viewing-and-exploring-test-results.html
+            https://www.jetbrains.com/help/pycharm/2016.1/test-runner-tab.html#testingToolbar
+
     code:
         dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
 
