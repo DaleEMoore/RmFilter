@@ -176,6 +176,9 @@ class TestStringMethods(unittest.TestCase):
 
 if __name__ == '__main__':
     print ("Script name=main.")
+    # TODO; shouldn't this be args.unittest_args?
+    #     sys.argv[1:] = args.unittest_args
+    #     unittest2.main()
     theProgram = sys.argv[0]
 
     runner = unittest.TextTestRunner()
