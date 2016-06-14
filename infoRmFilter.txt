@@ -65,7 +65,38 @@ figure out how to make argparse and unittest work well together.
             See
             https://www.jetbrains.com/help/pycharm/2016.1/viewing-and-exploring-test-results.html
             https://www.jetbrains.com/help/pycharm/2016.1/test-runner-tab.html#testingToolbar
+            They are a Menu, Run, Configuration: Unittests in tests(1). Results are:
+/usr/bin/python3m /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
+Testing started at 9:51 AM ...
 
+usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+setUp before Class tests.py
+Create testFolder1. tests.py
+Create testFolder1/d1. tests.py
+Create testFolder1/d2. tests.py
+Create testFolder1/d3. tests.py
+
+Test running rmFilter against the folders that have been setup. tests.py
+
+Error
+Traceback (most recent call last):
+  File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
+    args = parser2.parse_args()
+  File "/usr/lib/python3.5/argparse.py", line 1738, in parse_args
+    self.error(msg % ' '.join(argv))
+  File "/usr/lib/python3.5/argparse.py", line 2394, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/usr/lib/python3.5/argparse.py", line 2381, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+tearDown after Class tests.py
+Delete all files and folders under testFolder1. tests.py
+whatHappened from Delete:None tests.py
+
+Process finished with exit code 0
+             Fix this!
     code:
         dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
 
@@ -75,6 +106,46 @@ figure out how to make argparse and unittest work well together.
         OK
     command line:
         How do I run unittest from command line?
+        It appears that "./tests.py" should run, but; I get
+dalem@QnD:~/PycharmProjects/RmFilter⟫ ./tests.py
+./tests.py: line 1: __author__: command not found
+./tests.py: line 14: theDir: command not found
+./tests.py: line 15: theProgram: command not found
+./tests.py: line 23: syntax error near unexpected token `('
+./tests.py: line 23: `def createFolder(folderName, timeMod=time.time()):'
+        But this runs better:
+dalem@QnD:~/PycharmProjects/RmFilter⟫ python3 tests.py
+Script name=main.
+setUp before Class tests.py
+Create testFolder1. tests.py
+Create testFolder1/d1. tests.py
+Create testFolder1/d2. tests.py
+Create testFolder1/d3. tests.py
+
+Test running rmFilter against the folders that have been setup. tests.py
+Display filtered files, do NOT remove. tests.py
+Remove files created last week or before:2016-06-07 10:07:26.545912. tests.py
+EtearDown after Class tests.py
+Delete all files and folders under testFolder1. tests.py
+whatHappened from Delete:None tests.py
+
+======================================================================
+ERROR: test_rmFilter (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 137, in test_rmFilter
+    rmFilter.main(parser2, sys.argv, args, lastWeek, rmDsp)
+  File "/home/dalem/PycharmProjects/RmFilter/rmFilter.py", line 12, in main
+    for s1 in args.folder:
+TypeError: 'NoneType' object is not iterable
+
+----------------------------------------------------------------------
+Ran 1 test in 0.044s
+
+FAILED (errors=1)
+Done tests.py
+
+
 
 Create valid unit tests for
     Lucy's Cake Shop

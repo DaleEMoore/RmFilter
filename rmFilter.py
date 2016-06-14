@@ -9,6 +9,12 @@ theProgram = "rmFilter.py"
 
 def main(parser2, argv2, args, lastWeek, rmDsp):
     ## iterate through folder(s)
+    if args.folder == None:  # TODO; this should have been passed properly from argparse and unittest!
+        argsFolder = "."
+    else:
+        argsFolder = args.folder
+
+    print ("process: " + argsFolder)
     for s1 in args.folder:
         #print('Processing:' + s1)
         for file in os.listdir(s1): # os.walk(s1) walks down the tree.

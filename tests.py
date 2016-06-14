@@ -87,7 +87,8 @@ class TestStringMethods(unittest.TestCase):
     def test_rmFilter(self):
         print ("\nTest running rmFilter against the folders that have been setup. " + theProgram)
 
-        # TODO; setup args like command line
+        # TODO; setup args like command line; with something for theDir = "testFolder1"
+
         # Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
         #parser = argparse.ArgumentParser()
         #print ("running:" + parser.prog)
@@ -101,7 +102,9 @@ class TestStringMethods(unittest.TestCase):
         ## --folder is acceptable reduced to -f.
         #parser.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
         #parser.add_argument('--keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
+
         ## TODO; something like: args = "main.py -folder ."
+
         ## Like: http://stackoverflow.com/questions/24397258/can-not-run-nosetests-when-i-use-argparse-in-my-python-code
         #parser2 = copy.copy(parser)
         #argv2 = '--foo .'.split()
@@ -172,6 +175,7 @@ class TestStringMethods(unittest.TestCase):
     #  self.assertEqual('foo'.upper(), 'FOO')
 
 if __name__ == '__main__':
+    print ("Script name=main.")
     theProgram = sys.argv[0]
 
     runner = unittest.TextTestRunner()
