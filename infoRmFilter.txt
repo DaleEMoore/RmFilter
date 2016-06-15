@@ -9,68 +9,17 @@ LucysCakeShop.Com needs it's over 1 week old logs removed.
 
 
 TODO
-figure out how to make argparse and unittest work well together.
-    Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
-    Look at argParseAndUnitTest1.py
-    I think the answer to this
-    http://stackoverflow.com/questions/1029891/python-unittest-is-there-a-way-to-pass-command-line-options-to-the-app
-    will work fine.
+Pick just one mode to run unittest in successfully and fix rmFilter then go back and fix all modes.
+	PyCharm Run.
+		menu, run, Unittests in tests.
+		Could run "Unittests in TestSTringMethods" or "Unittests in tests(1)"
+		"Unittests in TestSTringMethods" uses Class TestStringMethods in tests.py and might be more Pythonic.
+			Appears to be the same as:
+dalem@Mercury:~/PycharmProjects/RmFilter⟫ /usr/bin/python3.4 /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py::TestStringMethods true
 
-    run unittest2 from code and from command line and from PyCharm and validate argParseAndUnitTest1.py functions.
-    PyCharm Run:
-        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py
-        usage: argParseAndUnitTest1.py [-h] [--input INPUT]
-                                       filename [unittest_args [unittest_args ...]]
-        argParseAndUnitTest1.py: error: the following arguments are required: filename, unittest_args
-        Add paramater some_file.txt and re-run.
-        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py some_file.txt
+##teamcity[enteredTheMatrix]
 
-        ----------------------------------------------------------------------
-        Ran 0 tests in 0.000s
-
-        OK
-        How do I run unittest from PyCharm? In the Project View, right-click tests.py,
-        run Unittests in tests.
-            /usr/bin/python3.4 /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
-            Testing started at 6:18 PM ...
-            usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
-            utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
-            setUp before Class tests.py
-            Create testFolder1. tests.py
-            Create testFolder1/d1. tests.py
-            Create testFolder1/d2. tests.py
-            Create testFolder1/d3. tests.py
-
-            Test running rmFilter against the folders that have been setup. tests.py
-
-            Error
-            Traceback (most recent call last):
-              File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
-                args = parser2.parse_args()
-              File "/usr/lib/python3.4/argparse.py", line 1740, in parse_args
-                self.error(msg % ' '.join(argv))
-              File "/usr/lib/python3.4/argparse.py", line 2395, in error
-                self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
-              File "/usr/lib/python3.4/argparse.py", line 2382, in exit
-                _sys.exit(status)
-            SystemExit: 2
-
-            tearDown after Class tests.py
-            Delete all files and folders under testFolder1. tests.py
-            whatHappened from Delete:None tests.py
-
-            Process finished with exit code 0
-        How do I look at unittest results in PyCharm?
-            View, Tool Windows, Run; will show the TestRunner objects.
-            See
-            https://www.jetbrains.com/help/pycharm/2016.1/viewing-and-exploring-test-results.html
-            https://www.jetbrains.com/help/pycharm/2016.1/test-runner-tab.html#testingToolbar
-            They are a Menu, Run, Configuration: Unittests in tests(1). Results are:
-/usr/bin/python3m /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
-Testing started at 9:51 AM ...
-
-usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
-utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+##teamcity[testCount count='1']
 setUp before Class tests.py
 Create testFolder1. tests.py
 Create testFolder1/d1. tests.py
@@ -78,73 +27,42 @@ Create testFolder1/d2. tests.py
 Create testFolder1/d3. tests.py
 
 Test running rmFilter against the folders that have been setup. tests.py
+usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py::TestStringMethods true
 
-Error
-Traceback (most recent call last):
-  File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
-    args = parser2.parse_args()
-  File "/usr/lib/python3.5/argparse.py", line 1738, in parse_args
-    self.error(msg % ' '.join(argv))
-  File "/usr/lib/python3.5/argparse.py", line 2394, in error
-    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
-  File "/usr/lib/python3.5/argparse.py", line 2381, in exit
-    _sys.exit(status)
-SystemExit: 2
+##teamcity[testSuiteStarted name='tests.TestStringMethods' locationHint='python_uttestid:///home/dalem/PycharmProjects/RmFilter/tests.TestStringMethods']
 
+##teamcity[testStarted name='test_rmFilter' locationHint='python_uttestid:///home/dalem/PycharmProjects/RmFilter/tests.TestStringMethods.test_rmFilter']
+
+##teamcity[testFailed name='test_rmFilter' error='true' message='Error' details='Traceback (most recent call last):|n  File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 125, in test_rmFilter|n    args = parser2.parse_args()|n  File "/usr/lib/python3.4/argparse.py", line 1740, in parse_args|n    self.error(msg % |' |'.join(argv))|n  File "/usr/lib/python3.4/argparse.py", line 2395, in error|n    self.exit(2, _(|'%(prog)s: error: %(message)s\n|') % args)|n  File "/usr/lib/python3.4/argparse.py", line 2382, in exit|n    _sys.exit(status)|nSystemExit: 2|n']
+##teamcity[testFinished name='test_rmFilter' duration='2']
 tearDown after Class tests.py
 Delete all files and folders under testFolder1. tests.py
 whatHappened from Delete:None tests.py
 
-Process finished with exit code 0
-             Fix this!
-    code:
-        dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
+##teamcity[testSuiteFinished name='tests.TestStringMethods']
 
-        ----------------------------------------------------------------------
-        Ran 0 tests in 0.000s
 
-        OK
-    command line:
-        How do I run unittest from command line?
-        It appears that "./tests.py" should run, but; I get
-dalem@QnD:~/PycharmProjects/RmFilter⟫ ./tests.py
-./tests.py: line 1: __author__: command not found
-./tests.py: line 14: theDir: command not found
-./tests.py: line 15: theProgram: command not found
-./tests.py: line 23: syntax error near unexpected token `('
-./tests.py: line 23: `def createFolder(folderName, timeMod=time.time()):'
-        But this runs better:
-dalem@QnD:~/PycharmProjects/RmFilter⟫ python3 tests.py
-Script name=main.
-setUp before Class tests.py
-Create testFolder1. tests.py
-Create testFolder1/d1. tests.py
-Create testFolder1/d2. tests.py
-Create testFolder1/d3. tests.py
+		"Unittests in tests(1)" uses tests.py as a script and might not be as Pythonic.
+	Code. (How is this different from Command line?)
+		dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
+	Command line.
+		dalem@QnD:~/PycharmProjects/RmFilter⟫ python3 tests.py
 
-Test running rmFilter against the folders that have been setup. tests.py
-Display filtered files, do NOT remove. tests.py
-Remove files created last week or before:2016-06-07 10:07:26.545912. tests.py
-EtearDown after Class tests.py
-Delete all files and folders under testFolder1. tests.py
-whatHappened from Delete:None tests.py
+	I'm not running it right! When I run tests.py!TestStringMethods in PyCharm I'm running utrunner.py first.
+	When I run argParseAndUnitTest1.py it's as a script and I'm running from python command line.
+	Run tests.py!TestStringMethods from command line as argParseAndUnitTest1.py.
+	Could I get it running in PyCharm with utrunner.py?
+	I could learn a lot from understanding
 
-======================================================================
-ERROR: test_rmFilter (__main__.TestStringMethods)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "tests.py", line 137, in test_rmFilter
-    rmFilter.main(parser2, sys.argv, args, lastWeek, rmDsp)
-  File "/home/dalem/PycharmProjects/RmFilter/rmFilter.py", line 12, in main
-    for s1 in args.folder:
-TypeError: 'NoneType' object is not iterable
+dalem@Mercury:~/PycharmProjects/RmFilter⟫ /usr/bin/python3.4 /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py::TestStringMethods true
 
-----------------------------------------------------------------------
-Ran 1 test in 0.044s
+less /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py
 
-FAILED (errors=1)
-Done tests.py
 
+
+Fix this file's vi indentation tab.
+	Turn on vi's :set auto-execute.
 
 
 Create valid unit tests for
@@ -384,3 +302,143 @@ Monday 6 June 2016 6:59 AM CST
     argParseAndUnitTest2.py
     trys this one http://stackoverflow.com/questions/20265522/argparse-and-unittest-python might work too.
     Error: this constructor takes no arguments; use argParseAndUnitTest1.py to fix the rmFilter problems.
+
+
+
+Wed Jun 15 08:53:20 CDT 2016
+figure out how to make argparse and unittest work well together.
+    Figure out how to make argparse and unittest work together and finish rmfilter for Ron Locke at LFI.
+    Look at argParseAndUnitTest1.py
+    I think the answer to this
+    http://stackoverflow.com/questions/1029891/python-unittest-is-there-a-way-to-pass-command-line-options-to-the-app
+    will work fine.
+
+    run unittest2 from code and from command line and from PyCharm and validate argParseAndUnitTest1.py functions.
+    PyCharm Run:
+        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py
+        usage: argParseAndUnitTest1.py [-h] [--input INPUT]
+                                       filename [unittest_args [unittest_args ...]]
+        argParseAndUnitTest1.py: error: the following arguments are required: filename, unittest_args
+        Add paramater some_file.txt and re-run.
+        /usr/bin/python3m /home/dalem/PycharmProjects/RmFilter/argParseAndUnitTest1.py some_file.txt
+
+        ----------------------------------------------------------------------
+        Ran 0 tests in 0.000s
+
+        OK
+        How do I run unittest from PyCharm? In the Project View, right-click tests.py,
+        run Unittests in tests.
+            /usr/bin/python3.4 /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
+            Testing started at 6:18 PM ...
+            usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+            utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+            setUp before Class tests.py
+            Create testFolder1. tests.py
+            Create testFolder1/d1. tests.py
+            Create testFolder1/d2. tests.py
+            Create testFolder1/d3. tests.py
+
+            Test running rmFilter against the folders that have been setup. tests.py
+
+            Error
+            Traceback (most recent call last):
+              File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
+                args = parser2.parse_args()
+              File "/usr/lib/python3.4/argparse.py", line 1740, in parse_args
+                self.error(msg % ' '.join(argv))
+              File "/usr/lib/python3.4/argparse.py", line 2395, in error
+                self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+              File "/usr/lib/python3.4/argparse.py", line 2382, in exit
+                _sys.exit(status)
+            SystemExit: 2
+
+            tearDown after Class tests.py
+            Delete all files and folders under testFolder1. tests.py
+            whatHappened from Delete:None tests.py
+
+            Process finished with exit code 0
+        How do I look at unittest results in PyCharm?
+            View, Tool Windows, Run; will show the TestRunner objects.
+            See
+            https://www.jetbrains.com/help/pycharm/2016.1/viewing-and-exploring-test-results.html
+            https://www.jetbrains.com/help/pycharm/2016.1/test-runner-tab.html#testingToolbar
+            They are a Menu, Run, Configuration: Unittests in tests(1). Results are:
+/usr/bin/python3m /home/dalem/Downloads/pycharm-community-2016.1.4/helpers/pycharm/utrunner.py /home/dalem/PycharmProjects/RmFilter/tests.py true
+Testing started at 9:51 AM ...
+
+usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
+utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py true
+setUp before Class tests.py
+Create testFolder1. tests.py
+Create testFolder1/d1. tests.py
+Create testFolder1/d2. tests.py
+Create testFolder1/d3. tests.py
+
+Test running rmFilter against the folders that have been setup. tests.py
+
+Error
+Traceback (most recent call last):
+  File "/home/dalem/PycharmProjects/RmFilter/tests.py", line 122, in test_rmFilter
+    args = parser2.parse_args()
+  File "/usr/lib/python3.5/argparse.py", line 1738, in parse_args
+    self.error(msg % ' '.join(argv))
+  File "/usr/lib/python3.5/argparse.py", line 2394, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/usr/lib/python3.5/argparse.py", line 2381, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+tearDown after Class tests.py
+Delete all files and folders under testFolder1. tests.py
+whatHappened from Delete:None tests.py
+
+Process finished with exit code 0
+             Fix this!
+    code
+        dalem@QnD:~/PycharmProjects/RmFilter$ ./argParseAndUnitTest1.py some_file.txt
+
+        ----------------------------------------------------------------------
+        Ran 0 tests in 0.000s
+
+        OK
+    command line:
+        How do I run unittest from command line?
+        It appears that "./tests.py" should run, but; I get
+dalem@QnD:~/PycharmProjects/RmFilter⟫ ./tests.py
+./tests.py: line 1: __author__: command not found
+./tests.py: line 14: theDir: command not found
+./tests.py: line 15: theProgram: command not found
+./tests.py: line 23: syntax error near unexpected token `('
+./tests.py: line 23: `def createFolder(folderName, timeMod=time.time()):'
+        But this runs better:
+dalem@QnD:~/PycharmProjects/RmFilter⟫ python3 tests.py
+Script name=main.
+setUp before Class tests.py
+Create testFolder1. tests.py
+Create testFolder1/d1. tests.py
+Create testFolder1/d2. tests.py
+Create testFolder1/d3. tests.py
+
+Test running rmFilter against the folders that have been setup. tests.py
+Display filtered files, do NOT remove. tests.py
+Remove files created last week or before:2016-06-07 10:07:26.545912. tests.py
+EtearDown after Class tests.py
+Delete all files and folders under testFolder1. tests.py
+whatHappened from Delete:None tests.py
+
+======================================================================
+ERROR: test_rmFilter (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "tests.py", line 137, in test_rmFilter
+    rmFilter.main(parser2, sys.argv, args, lastWeek, rmDsp)
+  File "/home/dalem/PycharmProjects/RmFilter/rmFilter.py", line 12, in main
+    for s1 in args.folder:
+TypeError: 'NoneType' object is not iterable
+
+----------------------------------------------------------------------
+Ran 1 test in 0.044s
+
+FAILED (errors=1)
+Done tests.py
+

@@ -118,11 +118,11 @@ class TestStringMethods(unittest.TestCase):
         parser2.add_argument('-folder', type=str, nargs='+', help='the folder to remove files and folders from.')
         parser2.add_argument('-rm', action='store_true', default=False, help='remove the files, otherwise just display.')
         parser2.add_argument('-keepfriday', action='store_true', default=False, help='keep files and folders created on Fridays.')
-        # TODO; "args = parser2.parse_args()" causes
+        # TODO; "args = parser2.parse_args()" causes "unrecognized arguments"
         #    usage: utrunner.py [-h] [-folder FOLDER [FOLDER ...]] [-rm] [-keepfriday]
         #    utrunner.py: error: unrecognized arguments: /home/dalem/PycharmProjects/RmFilter/tests.py::TestStringMethods::test_rmFilter --folder . true
         # It MIGHT be unreasonable to use argparse and unittest2!
-        args = parser2.parse_args()
+        args = parser2.parse_args() # TODO; Causes "unrecognized arguments" because utrunner.py running UnitTests.
         rmDsp = ""
         if args.rm:
             print("Remove filtered files " + theProgram)
